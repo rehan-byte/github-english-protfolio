@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Portfolio - My Voice, My World</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+        
+        .header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .student-info {
+            background: #f8f9ff;
+            padding: 20px 30px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .student-info p {
+            margin: 5px 0;
+            font-weight: 500;
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px 30px;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.1em;
+            border-left: 5px solid #ff6b6b;
+            margin: 20px 0;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 25px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4em;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            font-size: 1.2em;
+        }
+        
+        .section-content {
+            font-size: 1em;
+            line-height: 1.7;
+        }
+        
+        .index-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .index-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+        
+        .index-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .poem {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-left: 5px solid #e17055;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            line-height: 1.8;
+            margin: 15px 0;
+        }
+        
+        .book-review {
+            background: linear-gradient(135deg, #ddd6fe 0%, #c7d2fe 100%);
+            border-left: 5px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .book-title {
+            font-weight: 700;
+            font-size: 1.2em;
+            color: #7c3aed;
+            margin-bottom: 5px;
+        }
+        
+        .book-author {
+            font-weight: 600;
+            color: #6366f1;
+            margin-bottom: 15px;
+        }
+        
+        .grammar-examples {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .grammar-examples ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .grammar-examples li {
+            background: white;
+            margin: 8px 0;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 4px solid #10b981;
+            font-weight: 500;
+        }
+        
+        .descriptive-writing {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        
+        .place-description {
+            background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .person-description {
+            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .diary-entry {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px dashed #f59e0b;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Merriweather', serif;
+        }
+        
+        .diary-date {
+            font-weight: 700;
+            color: #d97706;
+            margin-bottom: 10px;
+        }
+        
+        .skit-script {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .skit-script ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skit-script li {
+            background: white;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #6366f1;
+        }
+        
+        .achievements {
+            background: linear-gradient(135deg, #fef7cd 0%, #fbbf24 100%);
+            border: 3px solid #f59e0b;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievements li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #92400e;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .achievements li::before {
+            content: '🏆';
+            margin-right: 10px;
+        }
+        
+        .closing-note {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-top: 30px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .section:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📘 English Portfolio</h1>
+            <div class="subtitle">"My Voice, My World"</div>
+        </div>
+        
+        <div class="student-info">
+            <p><strong>Name:</strong> Muhammed Amal Muhammed Hussain</p>
+            <p><strong>Grade & Section:</strong> 9 A</p>
+            <p><strong>Subject Teacher:</strong> Faisal Sir</p>
+            <p><strong>Submission Date:</strong> Monday, August 25</p>
+        </div>
+        
+        <div class="quote-section">
+            <strong>✒️ "Words are the most powerful weapon. Let your voice be heard through your creativity!"</strong>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">📑</span>
+                    Index
+                </h2>
+                <div class="index-grid">
+                    <div class="index-item">Acknowledgement</div>
+                    <div class="index-item">My Hobbies</div>
+                    <div class="index-item">Strengths & Weaknesses</div>
+                    <div class="index-item">My Ambition</div>
+                    <div class="index-item">Why I Like English</div>
+                    <div class="index-item">English Class Activities</div>
+                    <div class="index-item">Poem Writing</div>
+                    <div class="index-item">Book Review</div>
+                    <div class="index-item">Grammar in Action</div>
+                    <div class="index-item">Descriptive Writing</div>
+                    <div class="index-item">Diary Entry</div>
+                    <div class="index-item">Skit Script</div>
+                    <div class="index-item">My Achievements</div>
+                    <div class="index-item">Closing Note</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">🙏</span>
+                    Acknowledgement
+                </h2>
+                <div class="section-content">
+                    I would like to sincerely thank my parents, my teacher, and my friends who have always supported, guided, and encouraged me. Without their presence in my life, I would not have been able to learn and express myself as I do today.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">⚽</span>
+                    My Hobbies
+                </h2>
+                <div class="section-content">
+                    My hobbies are playing football, reading, writing, and creating poetry. These activities keep me relaxed and also help me grow in different ways, both mentally and emotionally.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">💪</span>
+                    My Strengths and Weaknesses
+                </h2>
+                <div class="section-content">
+                    One of my greatest strengths is that I am good at technology and writing. These skills give me confidence in my studies and activities. However, one of my weaknesses is that I can get injured easily, especially while playing sports. I try to be careful while enjoying what I love.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">🌟</span>
+                    My Ambition
+                </h2>
+                <div class="section-content">
+                    My ambition in life is to be successful and to have a loving family. I believe that true success is not only about career or wealth but also about happiness and the love we share with others.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">📖</span>
+                    Why I Like the English Subject
+                </h2>
+                <div class="section-content">
+                    I like English because literature makes it interesting. Stories, novels, and poems allow me to enter new worlds of imagination and thought. However, I also find grammar a little difficult, though I try my best to improve.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">📚</span>
+                    What I Have Done in English Class
+                </h2>
+                <div class="section-content">
+                    In English class, I have participated in many activities, including:
+                    <div class="grammar-examples">
+                        <ul>
+                            <li>Role plays and classroom activities</li>
+                            <li>Grammar exercises</li>
+                            <li>Reading passages and discussions</li>
+                            <li>Story and creative writing tasks</li>
+                            <li>Group activities that improved my communication</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">📝</span>
+                    Poem Writing
+                </h2>
+                <div class="section-content">
+                    <strong>"A Sensitive Heart"</strong>
+                    <div class="poem">
+                        A heart so soft, it feels the rain,<br>
+                        It holds both joy and silent pain.<br>
+                        It breaks with words, yet loves with care,<br>
+                        A fragile gift, beyond compare.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">📖</span>
+                    Book Review
+                </h2>
+                <div class="section-content">
+                    <div class="book-review">
+                        <div class="book-title">A Man Called Ove</div>
+                        <div class="book-author">Author: Fredrik Backman</div>
+                        <p>This novel tells the story of Ove, a grumpy yet deeply caring man whose life changes when unexpected friendships form around him. What I liked most is how it showed that even the toughest people often have the softest hearts. The book is filled with humor, emotion, and valuable lessons about kindness, love, and second chances.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">✍️</span>
+                    Grammar in Action
+                </h2>
+                <div class="section-content">
+                    Examples of grammar activities I worked on:
+                    <div class="grammar-examples">
+                        <ul>
+                            <li>Correcting sentences</li>
+                            <li>Using tenses properly</li>
+                            <li>Direct and indirect speech</li>
+                            <li>Active and passive voice</li>
+                            <li>Vocabulary building through exercises</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">🌍</span>
+                    Descriptive Writing
+                </h2>
+                <div class="section-content">
+                    <div class="descriptive-writing">
+                        <div class="place-description">
+                            <strong>A Place – My Home Country</strong><br>
+                            My home country, Kerala, especially Kollam Chithara, is a place close to my heart. It is full of greenery, backwaters, and cultural richness. The peaceful environment and natural beauty make it a land of traditions and warmth.
+                        </div>
+                        <div class="person-description">
+                            <strong>A Person –</strong><br>
+                            He is a kind and sweet-hearted person to those who are nice to him. He has a funny and light-hearted side that makes people laugh. But to those who are aggressive or unkind, he shows a militant and firm personality.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">📔</span>
+                    Diary Entry
+                </h2>
+                <div class="section-content">
+                    <div class="diary-entry">
+                        <div class="diary-date">Date: 14/9/24 - Event: Winning first prize in Digital Fest</div>
+                        <p><strong>Dear Diary,</strong></p>
+                        <p>Today was one of the happiest days of my life. I participated in the Digital Fest and gave my best in the presentation. To my surprise, I not only won first prize but also received full marks! The applause and recognition made me feel proud and thankful. It was a moment I will never forget.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">🎭</span>
+                    Skit Script
+                </h2>
+                <div class="section-content">
+                    <strong>Topic: Helping Others</strong><br>
+                    <strong>Characters: 3 Students + Teacher</strong>
+                    <div class="skit-script">
+                        <ul>
+                            <li>Student A drops his books and struggles to carry them.</li>
+                            <li>Student B laughs and ignores.</li>
+                            <li>Student C helps pick them up.</li>
+                            <li>Teacher enters and praises Student C for showing kindness.</li>
+                            <li><strong>Moral:</strong> Even a small act of help can make a big difference.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="section-icon">🏆</span>
+                    My Achievements
+                </h2>
+                <div class="section-content">
+                    <div class="achievements">
+                        <ul>
+                            <li>First Prize in Digital Fest with full marks on presentation</li>
+                            <li>Participation in school activities, competitions, and class events</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="closing-note">
+                <h2 style="margin-bottom: 20px;">✨ Closing Note</h2>
+                <p>This portfolio is a reflection of my growth, my voice, and my creativity. I believe I won't be anything without English because it gives me the power to express my thoughts, ideas, and emotions to the world.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
